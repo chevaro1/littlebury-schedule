@@ -99,8 +99,9 @@ function incrementdate(val) {
     res = formatDate(cdate);
     
     //console.log("increment date = " + res);
+    var lowerd = barn.toLowerCase();
 
-    location.href = barn + ".php?date=" + res;
+    location.href = lowerd + ".php?date=" + res;
     //document.getElementById("date").innerHTML = res;
 }
 
