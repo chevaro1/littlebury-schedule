@@ -9,7 +9,7 @@
 $barn = $_GET['barn'];
 #$date = "2020-12-24";
 #echo $date;
-
+/*
 #echo "gor date";
 $url = parse_url(getenv("mysql://b8e1af19b2b19f:1e770fa5@eu-cdbr-west-03.cleardb.net/heroku_02d9a109da8ad10?reconnect=true"));
 
@@ -17,6 +17,13 @@ $server = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
+
+$link = new mysqli($server, $username, $password, $db);
+*/
+$server = "eu-cdbr-west-03.cleardb.net";
+$username = "b8e1af19b2b19f";
+$password = "1e770fa5";
+$db = "heroku_02d9a109da8ad10";
 
 $link = new mysqli($server, $username, $password, $db);
 
