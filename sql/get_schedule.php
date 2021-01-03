@@ -26,7 +26,7 @@ $count = 0;
 #echo "result receivefd";
 if (mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-        #echo "in while loop";
+        echo "in while loop";
         $dates = explode("-",$row['date']);
         
         $row['start_year'] = $dates[0];
