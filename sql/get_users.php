@@ -14,7 +14,7 @@ $barn = $_GET['barn'];
 require_once 'config.php';
 #echo "got config";
 
-$sql = "SELECT * FROM users WHERE barn = '$barn'";
+$sql = "SELECT * FROM heroku_02d9a109da8ad10.users WHERE barn = '$barn'";
 #echo $sql;
 
 $result = mysqli_query($link, $sql);
