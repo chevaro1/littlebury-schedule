@@ -9,24 +9,28 @@
 $date = $_GET['date'];
 $barn = $_GET['barn'];
 #$date = "2020-12-24";
-echo $date;
-echo $barn;
+#echo $date;
+#echo $barn;
 
 #echo "gor date";
 require_once 'config.php';
 #echo "got config";
 
 $sql = "SELECT * FROM bookings WHERE date = '$date' AND barn = '$barn'";
-echo $sql;
+#echo $sql;
 
 $result = mysqli_query($link, $sql);
+
+if (!$result) {
+    echo "Connection failed: ". mysqli_connect_error();
+}
 
 $arr = [];
 $count = 0;
 #echo "result receivefd";
 if (mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-        echo "in while loop";
+        #echo "in while loop";
         $dates = explode("-",$row['date']);
         
         $row['start_year'] = $dates[0];
