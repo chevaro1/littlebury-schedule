@@ -26,7 +26,7 @@ if (!$link) {
 }
 #echo "got config";
 
-$sql = "SELECT * FROM heroku_02d9a109da8ad10.users WHERE barn = '$barn'";
+$sql = "SELECT * FROM users";
 echo $sql;
 
 $result = mysqli_query($link, $sql);
