@@ -12,7 +12,7 @@ $barn = $_GET['barn'];
 
 #echo "gor date";
 $path = '../config.php';
-echo 'path : $path';
+echo 'path : ' + $path;
 require_once $path;
 #echo "got config";
 
