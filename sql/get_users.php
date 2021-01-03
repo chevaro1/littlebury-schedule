@@ -11,7 +11,7 @@ $barn = $_GET['barn'];
 #echo $date;
 
 #echo "gor date";
-$path = '../config.php';
+$path = '../sql/config.php';
 echo 'path : ' + $path;
 require_once $path;
 #echo "got config";
