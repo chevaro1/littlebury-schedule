@@ -31,6 +31,10 @@ echo $sql;
 
 $result = mysqli_query($link, $sql);
 
+if (!$result) {
+    echo "Connection failed: ". mysqli_connect_error();
+}
+
 $arr = [];
 $count = 0;
 #echo "result receivefd";
