@@ -33,8 +33,8 @@ if (!$link) {
 }
 #echo "got config";
 
-$sql = "SELECT * FROM users";
-echo $sql;
+$sql = "SELECT * FROM users WHERE barn = '$barn'";
+#echo $sql;
 
 $result = mysqli_query($link, $sql);
 
