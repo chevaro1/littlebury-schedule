@@ -165,15 +165,19 @@ function add_dates(arr){
 
 
 function add_event() {
-    var date = $.datepicker.formatDate("yy-mm-dd", $("#datepicker-add").datepicker("getDate"));
+    var date12 = $.datepicker.formatDate("yy-mm-dd", $("#datepicker-add").datepicker("getDate"));
     var time = document.getElementById("add-time").value;
     var name = document.getElementById("add-name").value;
     var ftime = parseInt(time) + 2;
 
+    if(date12 === "") {
+          alert("please select a valid date");
+          return;
+      }
 
     var xmlhttp = new XMLHttpRequest();
     var url = "sql/add_event.php";
-    var param = "?date=" + date + "&time=" + time + "&name=" + name + "&ftime=" + ftime + "&barn=" + barn;
+    var param = "?date=" + date12 + "&time=" + time + "&name=" + name + "&ftime=" + ftime + "&barn=" + barn;
 
     //console.log("get data script running");
 
