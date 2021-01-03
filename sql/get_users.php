@@ -11,7 +11,9 @@ $barn = $_GET['barn'];
 #echo $date;
 
 #echo "gor date";
-require_once '../config.php';
+$path = '../config.php';
+echo 'path : $path';
+require_once $path;
 #echo "got config";
 
 $sql = "SELECT * FROM heroku_02d9a109da8ad10.users WHERE barn = '$barn'";
