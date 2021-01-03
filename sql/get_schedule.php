@@ -10,7 +10,7 @@ $date = $_GET['date'];
 $barn = $_GET['barn'];
 #$date = "2020-12-24";
 echo $date;
-ehco $barn;
+echo $barn;
 
 #echo "gor date";
 require_once 'config.php';
