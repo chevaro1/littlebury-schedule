@@ -15,7 +15,7 @@ require_once 'config.php';
 #echo "got config";
 
 $sql = "SELECT * FROM heroku_02d9a109da8ad10.users WHERE barn = '$barn'";
-#echo $sql;
+echo $sql;
 
 $result = mysqli_query($link, $sql);
 
