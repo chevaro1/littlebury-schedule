@@ -100,6 +100,7 @@ function incrementdate(val) {
     
     //console.log("increment date = " + res);
     var lowerd = barn.toLowerCase();
+    lowerd = lowerd.replace(" ", "-");
 
     location.href = lowerd + ".php?date=" + res;
     //document.getElementById("date").innerHTML = res;
