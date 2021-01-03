@@ -11,10 +11,19 @@ $barn = $_GET['barn'];
 #echo $date;
 
 #echo "gor date";
-$path = '../sql/config.php';
-echo 'path : ';
-echo $path;
-require_once $path;
+$url = parse_url(getenv("mysql://b8e1af19b2b19f:1e770fa5@eu-cdbr-west-03.cleardb.net/heroku_02d9a109da8ad10?reconnect=true"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+
+$link = new mysqli($server, $username, $password, $db);
+
+// Check connection
+if (!$link) {
+  die("Connection failed: " . mysqli_connect_error());
+}
 #echo "got config";
 
 $sql = "SELECT * FROM heroku_02d9a109da8ad10.users WHERE barn = '$barn'";
