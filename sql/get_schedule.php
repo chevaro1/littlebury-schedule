@@ -13,7 +13,9 @@ $barn = $_GET['barn'];
 #echo $barn;
 
 #echo "gor date";
-require_once '../sql/config.php';
+$path = '/sql/config.php';
+echo 'path : ' + $path;   
+require_once $path;
 #echo "got config";
 
 $sql = "SELECT * FROM bookings WHERE date = '$date' AND barn = '$barn'";
