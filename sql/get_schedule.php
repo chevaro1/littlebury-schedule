@@ -17,7 +17,7 @@ require_once 'config.php';
 #echo "got config";
 
 $sql = "SELECT * FROM bookings WHERE date = '$date' AND barn = '$barn'";
-#echo $sql;
+echo $sql;
 
 $result = mysqli_query($link, $sql);
 
