@@ -15,7 +15,17 @@ $barn = $_GET['barn'];
 #echo $date;
 
 #echo "gor date";
-require_once 'config.php';
+$server = "eu-cdbr-west-03.cleardb.net";
+$username = "b8e1af19b2b19f";
+$password = "1e770fa5";
+$db = "heroku_02d9a109da8ad10";
+
+$link = new mysqli($server, $username, $password, $db);
+
+// Check connection
+if (!$link) {
+  die("Connection failed: " . mysqli_connect_error());
+}
 #echo "got config";
 
 #$sql = "INSERT INTO `dingle` (`id`, `date`, `location`, `start_time`, `end_time`, `name`) VALUES (NULL, '$date', '$name', '$time', '$ftime', 'Yard Visit');";
