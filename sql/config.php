@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+/*
 $user = "william";
 $pass = "global2020";
 $db = "schedule";
@@ -19,8 +19,16 @@ $username = $user;
 $password = $pass;
 $database = $db;
 
+*/
 
-$link = mysqli_connect($servername, $username, $password, $database);
+$url = parse_url(getenv("mysql://b8e1af19b2b19f:1e770fa5@eu-cdbr-west-03.cleardb.net/heroku_02d9a109da8ad10?reconnect=true"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+
+$link = mysqli_connect($server, $username, $password, $db);
 
 // Check connection
 if (!$link) {
