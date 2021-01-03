@@ -173,7 +173,12 @@ function add_event() {
     if(date12 === "") {
           alert("please select a valid date");
           return;
-      }
+    }
+  
+    var c = confirm("Please confirm your booking: \n\
+                    Date: " + reverse(date12) + "\n\
+                    Start Time: " + time + ":00\n\
+                    Name: " + name );
 
     var xmlhttp = new XMLHttpRequest();
     var url = "sql/add_event.php";
