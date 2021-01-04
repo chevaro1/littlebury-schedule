@@ -8,3 +8,13 @@
     <i class="fa fa-chevron-circle-up"></i></span></a>
   </div>
 </footer>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-85GZBLTQ31"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-85GZBLTQ31');
+</script>
