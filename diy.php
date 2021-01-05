@@ -7,7 +7,7 @@
  */
 
 $barn = "DIY";
-$max = "2";
+$max = "3";
 
 if (isset($_GET["date"])) {
     $date = $_GET["date"];
