@@ -7,6 +7,7 @@
  */
 
 $barn = "Full Livery";
+$max = "2";
 
 if (isset($_GET["date"])) {
     $date = $_GET["date"];
@@ -93,6 +94,7 @@ if (isset($_GET["date"])) {
 <script>
 const d = "<?php echo $date ?>";
 const barn = "<?php echo $barn ?>";
+const maxUsers = "<?php echo $max ?>";
 </script>
 
 <script src="scripts/schedule.js"></script>
