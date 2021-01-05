@@ -169,16 +169,32 @@ function add_event() {
     var time = document.getElementById("add-time").value;
     var name = document.getElementById("add-name").value;
     var ftime = parseInt(time) + 2;
-
+    
+    console.log("date =" + date12 + "hello");
+    
     if(date12 === "") {
-          alert("please select a valid date");
-          return;
+        alert("please select a valid date");
+        return;
     }
-  
+    
+    var check = checkexists(date12, name, time);
+    //console.log("check = :" + check);
+    if (check === "1") {
+        alert("You have already booked this time slot on this date");
+        return;
+    }
+    
     var c = confirm("Please confirm your booking: \n\
                     Date: " + reverse(date12) + "\n\
                     Start Time: " + time + ":00\n\
                     Name: " + name );
+    
+    if (c === false) {
+        return;
+    }
+    
+    
+    
 
     var xmlhttp = new XMLHttpRequest();
     var url = "sql/add_event.php";
@@ -189,12 +205,41 @@ function add_event() {
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         //var myArr = JSON.parse(this.responseText);
-        console.log("refreshing schedule after event added date: " + d);
+        //console.log("refreshing schedule after event added date: " + d);
         getdata(d);
       }
     };
     xmlhttp.open("GET", url+param, true);
     xmlhttp.send();
+}
+
+
+
+function checkexists(datet, name, start) {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "sql/check_exists.php";
+    var param = "?date=" + datet + "&start=" + start + "&name=" + name + "&barn=" + barn;
+    var res = "0";
+
+    //console.log("check exists called");
+
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        console.log("returned total = " + myArr[0].total);
+        
+        if (myArr[0].total >= "1"){
+            //console.log("breach found");
+            res = "1";
+            //console.log("breach found res = " + res);
+            return;
+        }
+      }
+    };
+    xmlhttp.open("GET", url+param, false);
+    xmlhttp.send();
+    //console.log("in check function res = " + res);
+    return res;
 }
 
 
