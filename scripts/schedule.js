@@ -184,6 +184,13 @@ function add_event() {
         alert("You have already booked this time slot on this date");
         return;
     }
+  
+    var check = checkmax(date12, time);
+    console.log("checkmax = :" + check);
+    if (check === "1") {
+        alert("max number of booking reached for this time");
+        return;
+    }
     
     var c = confirm("Please confirm your booking: \n\
                     Date: " + reverse(date12) + "\n\
@@ -212,6 +219,34 @@ function add_event() {
     };
     xmlhttp.open("GET", url+param, true);
     xmlhttp.send();
+}
+
+
+function checkmax(datet, start) {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "sql/checkmax.php";
+    var param = "?date=" + datet + "&start=" + start + "&barn=" + barn;
+    var res = "0";
+
+    console.log("check max called");
+
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        console.log("returned total = " + myArr[0].total);
+        
+        if (myArr[0].total >= maxUsers){
+            console.log("limit reached");
+            res = "1";
+            console.log("limit reached res = " + res);
+            return;
+        }
+      }
+    };
+    xmlhttp.open("GET", url+param, false);
+    xmlhttp.send();
+    console.log("in checkmax function res = " + res);
+    return res;
 }
 
 
