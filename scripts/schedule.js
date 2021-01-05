@@ -41,12 +41,13 @@ timetable.setScope(8,22);
 var renderer = new Timetable.Renderer(timetable);
 renderer.draw('.timetable');
 
-
+var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 getusers();
 
 getdata(d);
-document.getElementById("date").innerHTML = reverse(d);
+var datedisplay = days[ cdate.getDay() ] + ", " + reverse(d);
+document.getElementById("date").innerHTML = datedisplay;
 
 
 function getusers() {
