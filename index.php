@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
-<title>Home</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-orange.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<head>
+  <title>Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-orange.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  <script data-ad-client="ca-pub-9105329071156774" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
 <body>
 
 <!-- Side Navigation -->
@@ -17,7 +20,7 @@
 <!-- Modal -->
 <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-top">
-      <header class="w3-container w3-theme-l1"> 
+      <header class="w3-container w3-theme-l1">
         <span onclick="document.getElementById('id01').style.display='none'"
         class="w3-button w3-display-topright">×</span>
         <h4>Oh snap! We just showed you a modal..</h4>
@@ -104,5 +107,3 @@ function livery() {
 
 </body>
 </html>
-
-
