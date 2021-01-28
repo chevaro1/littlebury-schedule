@@ -244,14 +244,16 @@ function checkmax(datet, start) {
               console.log("limit reached after 4pm res = " + res);
               return;
           }
+        } else {
+          if (myArr[0].total >= maxUsers){
+              console.log("limit reached");
+              res = "1";
+              console.log("limit reached res = " + res);
+              return;
+          }
         }
 
-        if (myArr[0].total >= maxUsers){
-            console.log("limit reached");
-            res = "1";
-            console.log("limit reached res = " + res);
-            return;
-        }
+
       }
     };
     xmlhttp.open("GET", url+param, false);
