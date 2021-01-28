@@ -51,7 +51,7 @@ document.getElementById("date").innerHTML = datedisplay;
 
 
 function getusers() {
-    
+
     var xmlhttp = new XMLHttpRequest();
     var url = "sql/get_users.php";
     var param = "?barn=" + barn;
@@ -69,16 +69,16 @@ function getusers() {
 }
 
 function add_users(arr) {
-    var select = document.getElementById('add-name')
-    
+    var select = document.getElementById('add-name');
+
     for(i = 0; i < arr.length; i++) {
         var opt = document.createElement('option');
         opt.value = arr[i].name;
         opt.innerHTML = arr[i].name;
         select.appendChild(opt);
-        
+
         timetable.addLocations([arr[i].name]);
-        
+
     }
 }
 
@@ -91,14 +91,14 @@ function setdate() {
 }
 
 function incrementdate(val) {
-    
+
     if (val === "plus") {
         cdate.setDate(cdate.getDate()+1);
     } else {
         cdate.setDate(cdate.getDate()-1);
     }
     res = formatDate(cdate);
-    
+
     //console.log("increment date = " + res);
     var lowerd = barn.toLowerCase();
     lowerd = lowerd.replace(" ", "-");
@@ -109,7 +109,7 @@ function incrementdate(val) {
 
 
 function getdata(date){
-        
+
     var xmlhttp = new XMLHttpRequest();
     var url = "sql/get_schedule.php";
     var param = "?date=" + date + "&barn=" + barn;
@@ -125,8 +125,8 @@ function getdata(date){
     xmlhttp.open("GET", url+param, true);
     xmlhttp.send();
   }
-  
-  
+
+
 function add_dates(arr){
     console.log("EVENTS ADDED");
     //getusers();
@@ -153,11 +153,11 @@ function add_dates(arr){
                var day = event.startDate + '';
                var time = day.split(" ");
                var tim = time[4].slice(0,-3);
-               //document.getElementById("delete").onclick = delete_event(event.location,tim);  
+               //document.getElementById("delete").onclick = delete_event(event.location,tim);
                deletestart = tim.slice(0,-3);
                deletename = event.location;
                document.getElementById("mod").innerHTML = event.location + " will be down at " + tim;
-               modal.style.display = "block"; 
+               modal.style.display = "block";
         }});
         //console.log("event added");
     }
@@ -170,39 +170,39 @@ function add_event() {
     var time = document.getElementById("add-time").value;
     var name = document.getElementById("add-name").value;
     var ftime = parseInt(time) + 2;
-    
+
     console.log("date =" + date12 + "hello");
-    
+
     if(date12 === "") {
         alert("please select a valid date");
         return;
     }
-    
+
     var check = checkexists(date12, name, time);
     //console.log("check = :" + check);
     if (check === "1") {
         alert("You have already booked this time slot on this date");
         return;
     }
-  
+
     var check = checkmax(date12, time);
     console.log("checkmax = :" + check);
     if (check === "1") {
         alert("max number of booking reached for this time");
         return;
     }
-    
+
     var c = confirm("Please confirm your booking: \n\
                     Date: " + reverse(date12) + "\n\
                     Start Time: " + time + ":00\n\
                     Name: " + name );
-    
+
     if (c === false) {
         return;
     }
-    
-    
-    
+
+
+
 
     var xmlhttp = new XMLHttpRequest();
     var url = "sql/add_event.php";
@@ -234,7 +234,16 @@ function checkmax(datet, start) {
       if (this.readyState == 4 && this.status == 200) {
         var myArr = JSON.parse(this.responseText);
         console.log("returned total = " + myArr[0].total);
-        
+        var time = parseInt(start);
+        if (time >= 16){
+          if (myArr[0].total >= (maxUsers + 1)){
+              console.log("limit reached after 4pm");
+              res = "1";
+              console.log("limit reached after 4pm res = " + res);
+              return;
+          }
+        }
+
         if (myArr[0].total >= maxUsers){
             console.log("limit reached");
             res = "1";
@@ -263,7 +272,7 @@ function checkexists(datet, name, start) {
       if (this.readyState == 4 && this.status == 200) {
         var myArr = JSON.parse(this.responseText);
         console.log("returned total = " + myArr[0].total);
-        
+
         if (myArr[0].total >= "1"){
             //console.log("breach found");
             res = "1";
@@ -282,13 +291,13 @@ function checkexists(datet, name, start) {
 
 function delete_event() {
     console.log("DELETING EVENT");
-    
+
 
      var xmlhttp = new XMLHttpRequest();
       var url = "sql/delete_event.php";
       var param = "?date=" + d + "&time=" + deletestart + "&name=" + deletename + "&barn=" + barn;
 
-      
+
 
       xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -311,9 +320,9 @@ function formatDate(date) {
         day = '' + d.getDate(),
         year = d.getFullYear();
 
-    if (month.length < 2) 
+    if (month.length < 2)
         month = '0' + month;
-    if (day.length < 2) 
+    if (day.length < 2)
         day = '0' + day;
 
     return [year, month, day].join('-');
@@ -332,7 +341,7 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -341,15 +350,15 @@ window.onclick = function(event) {
       //console.log("modal closed");
     modal.style.display = "none";
   }
-}
+};
 
 function reverse(s){
-    var s = s.split("-");
+    s = s.split("-");
     var one = s[0];
     var two = s[1];
     var three = s[2];
     var mid = "-";
     var res = three.concat(mid,two,mid,one);
     return res;
-    
+
 }
