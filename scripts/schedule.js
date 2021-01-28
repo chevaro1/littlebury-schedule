@@ -235,7 +235,9 @@ function checkmax(datet, start) {
         var myArr = JSON.parse(this.responseText);
         console.log("returned total = " + myArr[0].total);
         var time = parseInt(start);
+        console.log("in check max, time = ", time);
         if (time >= 16){
+          console.log("time is greater than 16 so were in if");
           if (myArr[0].total >= (maxUsers + 1)){
               console.log("limit reached after 4pm");
               res = "1";
